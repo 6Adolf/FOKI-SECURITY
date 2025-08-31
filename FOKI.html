@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FOKI SECURITY - Société de Gardiennage à N'Djamena</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ffd700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #ffd700;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23001122" width="1200" height="600"/><g fill="%23ffd700" opacity="0.1"><circle cx="200" cy="150" r="80"/><circle cx="800" cy="200" r="60"/><circle cx="1000" cy="400" r="100"/></g></svg>');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            color: #333;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            color: #1e3c72;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid #dee2e6;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(30, 60, 114, 0.2);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #1e3c72;
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .experience-badge {
+            background: #ffd700;
+            color: #1e3c72;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-card {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: scale(1.05);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #ffd700;
+        }
+
+        /* Footer */
+        footer {
+            background: #000;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Loading animation */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #1e3c72;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #ffd700;
+            border-top: 5px solid transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+    </div>
+
+    <header>
+        <nav class="container">
+            <div class="logo">🛡️ FOKI SECURITY</div>
+            <ul class="nav-links">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#apropos">À propos</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="accueil">
+        <div class="hero-content">
+            <h1>FOKI SECURITY</h1>
+            <p>Votre Sécurité, Notre Priorité</p>
+            <p>Société de Gardiennage Professionnelle à N'Djamena</p>
+            <a href="#contact" class="btn">Contactez-nous</a>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Nos Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🏢</div>
+                    <h3>Gardiennage d'Entreprises</h3>
+                    <p>Protection et surveillance de vos locaux commerciaux et industriels avec des agents qualifiés disponibles 24h/24.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🏠</div>
+                    <h3>Gardiennage Résidentiel</h3>
+                    <p>Sécurité de votre domicile et de vos biens avec des services adaptés à vos besoins spécifiques.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎪</div>
+                    <h3>Sécurité Événementielle</h3>
+                    <p>Gestion de la sécurité lors de vos événements privés ou publics avec des équipes expérimentées.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📹</div>
+                    <h3>Surveillance Électronique</h3>
+                    <p>Installation et monitoring de systèmes de vidéosurveillance pour une protection optimale.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🚛</div>
+                    <h3>Transport de Valeurs</h3>
+                    <p>Convoyage sécurisé de fonds et objets de valeur avec des véhicules blindés et du personnel qualifié.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">👥</div>
+                    <h3>Formation Sécurité</h3>
+                    <p>Formation du personnel en matière de sécurité et de prévention des risques.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="apropos">
+        <div class="container">
+            <h2 class="section-title">À Propos de FOKI SECURITY</h2>
+            <div class="about-content">
+                <div>
+                    <div class="experience-badge">
+                        5 ANS D'EXPÉRIENCE
+                    </div>
+                    <h3>Notre Expertise</h3>
+                    <p>Forte de 5 années d'expérience dans le domaine de la sécurité privée, FOKI SECURITY s'est imposée comme une référence en matière de gardiennage et de protection à N'Djamena.</p>
+                    <p>Notre équipe de professionnels qualifiés et formés aux dernières techniques de sécurité vous garantit un service de qualité supérieure.</p>
+                </div>
+                <div>
+                    <h3>Nos Valeurs</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin: 1rem 0; padding: 1rem; background: rgba(255,255,255,0.1); border-radius: 10px;">
+                            <strong>🎯 Professionnalisme :</strong> Des agents formés et certifiés
+                        </li>
+                        <li style="margin: 1rem 0; padding: 1rem; background: rgba(255,255,255,0.1); border-radius: 10px;">
+                            <strong>⏰ Disponibilité :</strong> Service 7j/7, de 7h à 17h
+                        </li>
+                        <li style="margin: 1rem 0; padding: 1rem; background: rgba(255,255,255,0.1); border-radius: 10px;">
+                            <strong>🛡️ Fiabilité :</strong> Protection assurée de vos biens
+                        </li>
+                        <li style="margin: 1rem 0; padding: 1rem; background: rgba(255,255,255,0.1); border-radius: 10px;">
+                            <strong>📞 Réactivité :</strong> Intervention rapide en cas d'urgence
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Contactez-nous</h2>
+            <div class="contact-info">
+                <div class="contact-card">
+                    <div class="contact-icon">📍</div>
+                    <h3>Adresse</h3>
+                    <p>Walia, N'Djamena<br>Tchad</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">📞</div>
+                    <h3>Téléphones</h3>
+                    <p><a href="tel:+23565515550" style="color: #ffd700; text-decoration: none;">65 51 55 50</a></p>
+                    <p><a href="tel:+23563718757" style="color: #ffd700; text-decoration: none;">63 71 87 57</a></p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">✉️</div>
+                    <h3>Email</h3>
+                    <p><a href="mailto:fokisec@gmail.com" style="color: #ffd700; text-decoration: none;">fokisec@gmail.com</a></p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">🕒</div>
+                    <h3>Horaires</h3>
+                    <p>7h - 17h<br>7 jours sur 7</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="tel:+23565515550" class="btn" style="margin: 0 1rem;">Appeler maintenant</a>
+                <a href="mailto:fokisec@gmail.com" class="btn" style="margin: 0 1rem;">Envoyer un email</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 FOKI SECURITY - Société de Gardiennage. Tous droits réservés.</p>
+            <p>Votre partenaire de confiance pour la sécurité à N'Djamena depuis 5 ans</p>
+        </div>
+    </footer>
+
+    <script>
+        // Loading animation
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('loading').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('loading').style.display = 'none';
+                }, 500);
+            }, 1000);
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header background on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(0, 0, 0, 0.95)';
+            } else {
+                header.style.background = 'rgba(0, 0, 0, 0.9)';
+            }
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+
+        // Observe service cards and contact cards
+        document.querySelectorAll('.service-card, .contact-card').forEach(card => {
+            card.style.opacity = '0';
+            observer.observe(card);
+        });
+
+        // Mobile menu toggle (simple version)
+        function toggleMobileMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        // Add mobile menu button for smaller screens
+        if (window.innerWidth <= 768) {
+            const nav = document.querySelector('nav');
+            const mobileMenuBtn = document.createElement('button');
+            mobileMenuBtn.innerHTML = '☰';
+            mobileMenuBtn.style.cssText = `
+                background: none;
+                border: none;
+                color: white;
+                font-size: 1.5rem;
+                cursor: pointer;
+                display: block;
+            `;
+            mobileMenuBtn.onclick = toggleMobileMenu;
+            nav.appendChild(mobileMenuBtn);
+        }
+
+        // Emergency contact animation
+        function animateEmergencyButton() {
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(btn => {
+                btn.addEventListener('mouseover', function() {
+                    this.style.transform = 'scale(1.05) translateY(-2px)';
+                });
+                btn.addEventListener('mouseout', function() {
+                    this.style.transform = 'scale(1) translateY(0)';
+                });
+            });
+        }
+
+        animateEmergencyButton();
+
+        // Add some interactivity to service cards
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // Create a subtle feedback animation
+                this.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 150);
+            });
+        });
+    </script>
+</body>
+</html>
